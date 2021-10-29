@@ -1,0 +1,579 @@
+/**
+ * Owl Carousel v2.3.4
+ * Copyright 2013-2018 David Deutsch
+ * Licensed under: SEE LICENSE IN https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE
+ */
+/*
+ *  Owl Carousel - Core
+ */
+ @media (min-device-width:600px) {
+  img{
+      content: attr(data-src-600px, url);
+  }
+}
+
+@media (min-device-width:800px) {
+  img[data-src-800px] {
+      content: attr(data-src-800px, url);
+  }
+}
+
+@media  screen and (max-width: 1060px) {
+  #content { width:67%; }
+  #date_content { width:30%; margin-left:3%;}   
+}
+
+/* Media Queries: Tabled Portrait */
+@media screen and (max-width: 768px) {
+   #content { width:100%; }
+   #date_content { width:100%; margin:0; border:none; } 
+}
+@media only screen and (max-width: 968px){
+  #Dlayer{display:inline-block}
+  #Tlayer{display:inline-block}
+}
+
+ img { max-width: 100%; height: auto; }
+.owl-carousel {
+  display: none;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* position relative and z-index fix webkit rendering fonts issue */
+  position: relative;
+  z-index: 1; }
+  .owl-carousel .owl-stage {
+    position: relative;
+    -ms-touch-action: pan-Y;
+    touch-action: manipulation;
+    -moz-backface-visibility: hidden;
+    /* fix firefox animation glitch */ }
+  .owl-carousel .owl-stage:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0; }
+  .owl-carousel .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    /* fix for flashing background */
+    -webkit-transform: translate3d(0px, 0px, 0px); }
+  .owl-carousel .owl-wrapper,
+  .owl-carousel .owl-item {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0); }
+  .owl-carousel .owl-item {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none; }
+  .owl-carousel .owl-item img {
+    display: block;
+    width: 100%; }
+  .owl-carousel .owl-nav.disabled,
+  .owl-carousel .owl-dots.disabled {
+    display: none; }
+  .owl-carousel .owl-nav .owl-prev,
+  .owl-carousel .owl-nav .owl-next,
+  .owl-carousel .owl-dot {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .owl-carousel .owl-nav button.owl-prev,
+  .owl-carousel .owl-nav button.owl-next,
+  .owl-carousel button.owl-dot {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0 !important;
+    font: inherit; }
+  .owl-carousel.owl-loaded {
+    display: block; }
+  .owl-carousel.owl-loading {
+    opacity: 0;
+    display: block; }
+  .owl-carousel.owl-hidden {
+    opacity: 0; }
+  .owl-carousel.owl-refresh .owl-item {
+    visibility: hidden; }
+  .owl-carousel.owl-drag .owl-item {
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+  .owl-carousel.owl-grab {
+    cursor: move;
+    cursor: grab; }
+  .owl-carousel.owl-rtl {
+    direction: rtl; }
+  .owl-carousel.owl-rtl .owl-item {
+    float: right; }
+
+/* No Js */
+.no-js .owl-carousel {
+  display: block; }
+
+/*
+ *  Owl Carousel - Animate Plugin
+ */
+.owl-carousel .animated {
+  animation-duration: 1000ms;
+  animation-fill-mode: both; }
+
+.owl-carousel .owl-animated-in {
+  z-index: 0; }
+
+.owl-carousel .owl-animated-out {
+  z-index: 1; }
+
+.owl-carousel .fadeOut {
+  animation-name: fadeOut; }
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+/*
+ * 	Owl Carousel - Auto Height Plugin
+ */
+.owl-height {
+  transition: height 500ms ease-in-out; }
+
+/*
+ * 	Owl Carousel - Lazy Load Plugin
+ */
+.owl-carousel .owl-item {
+  /**
+			This is introduced due to a bug in IE11 where lazy loading combined with autoheight plugin causes a wrong
+			calculation of the height of the owl-item that breaks page layouts
+		 */ }
+  .owl-carousel .owl-item .owl-lazy {
+    opacity: 0;
+    transition: opacity 400ms ease; }
+  .owl-carousel .owl-item .owl-lazy[src^=""], .owl-carousel .owl-item .owl-lazy:not([src]) {
+    max-height: 0; }
+  .owl-carousel .owl-item img.owl-lazy {
+    transform-style: preserve-3d; }
+
+/*
+ * 	Owl Carousel - Video Plugin
+ */
+.owl-carousel .owl-video-wrapper {
+  position: relative;
+  height: 100%;
+  background: #000; }
+
+.owl-carousel .owl-video-play-icon {
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  left: 50%;
+  top: 50%;
+  margin-left: -40px;
+  margin-top: -40px;
+  background: url("owl.video.play.png") no-repeat;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+  transition: transform 100ms ease; }
+
+.owl-carousel .owl-video-play-icon:hover {
+  -ms-transform: scale(1.3, 1.3);
+      transform: scale(1.3, 1.3); }
+
+.owl-carousel .owl-video-playing .owl-video-tn,
+.owl-carousel .owl-video-playing .owl-video-play-icon {
+  display: none; }
+
+.owl-carousel .owl-video-tn {
+  opacity: 0;
+  height: 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity 400ms ease; }
+
+.owl-carousel .owl-video-frame {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%; }
+  .main-col{
+    margin-left:0px;
+  }
+  .navbarList{
+    margin-left:40px;
+  }
+  .navList{
+    margin-left:15px
+  }
+  .right-nav{
+    text-decoration:none;
+    color:black;
+  }
+  .right-nav:hover{
+    color:#00c60e;
+    
+  }
+  .nav-ul{
+    display:flex;
+    flex-direction:column;
+  }
+  .main-nav{
+    margin-right:30px;
+  }
+  .ni-list{
+    padding:20px;
+  }
+  .ni-list:hover{
+    color:#00c60e;
+  }
+  .notification{
+    background-color: red;
+  color: white;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  border-radius:0.25rem;
+  }
+  .notification:hover {
+    background: red;
+  }
+  .notification .badge {
+    position: absolute;
+    top: -55px;
+    right: -35px;
+    padding: 5px 10px;
+    border-radius: 35px;
+    background: red;
+    color: white;
+  }
+  .fa-2x{
+    font-size:1.5rem;
+  }
+  .ni-list-img{
+    width: 75px;
+    margin-top: -8px;
+  }
+  .location-nav{
+    margin-left:25%;
+  }
+  .circle {
+    
+    height: 25px;
+    width: 25px;
+    background: white;
+    border:1px solid #00c60e;
+    color:#00c60e;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 15px;
+    text-align: center;
+}
+.arrow{
+  margin-left:5px;
+}
+.arrow-active{
+  color:#00c60e;
+}
+.location-btn{
+  margin-left:30%;
+}
+.btn-custom{
+  background-color: #00c06c;
+  width: 130px;
+  height: auto;
+  margin-right: 15px;
+  color:white;
+  text-align:center;
+  justify-content:space-between;
+  padding-top:5px;
+  font-size:12px;
+}
+.btn-custom:hover{
+  color:white;
+}
+
+/* Set the size of the div element that contains the map */
+#map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+  margin-left:15%;
+  margin-top:2%;
+}
+.mapImg{
+  width: 750px;
+  height: auto;
+  border: 4px solid #00c06c;
+  margin-top: -5px;
+}
+.custom-btn{
+  background-color:#00c06c;
+  color:white;
+  float: right;
+  margin-right: 20%;
+  margin-top: 4%;
+
+}
+.custom-btn:hover{
+  color:white;
+}
+#maptitle{
+  background-color:#00c06c;
+  color:white;
+  width:750px;
+  height:auto;
+
+}
+.locText{
+  background: #00c06c;
+  padding-left: 270px; 
+  width: 750px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  color:white;
+}
+#showmap{
+  margin-left:140px;
+}
+.service{
+  margin-left:100px;
+  margin-right:100px;
+}
+.service_row{
+  margin-top:60px;
+  margin-left: 200px;
+}
+.checked {
+  color: orange;
+}
+.footerReview{
+  margin-top:30px;
+}
+.include{
+  margin-top:50px;
+}
+.inp{
+  width:20px;
+  text-align:center;
+  margin-left: 10px;
+  border-radius: 30%;
+  border: 1px solid #20c14a;
+}
+
+.cartData{
+  margin:30px;
+}
+.span_pos{
+  color:#29af11 !important;
+}
+.span_pos_remove{
+  float:right;
+  color:#e58c06 !important;
+}
+.bathList{
+  display:block;
+}
+.booking{
+  font-size: 14px;
+  font-weight: 300;
+}
+.bookingUl{
+  margin-top:50px;
+}
+.bookingLi{
+  margin:10px 0 10px 0px;
+}
+#bookingLi{
+  padding-bottom:14px;
+  display:none;
+
+}
+#bookingBed{
+ display:none;
+}
+#bookingBath{
+  display:none;
+}
+#bookingKitchen{
+  display:none;
+}
+#bookingFridge{
+  display:none;
+}
+#bookingGarden{
+  display:none;
+}
+.ben{
+  margin:5px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.benrow{
+  margin-left:200px;
+}
+.benul .ben ::before{
+  content: "\2022";
+  color:#20c14a;
+  margin-right:5px;
+}
+.button-class{
+  margin-left: 45%;
+  margin-top: 30px;
+}
+.but{
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  width: 100px;
+  text-align: center;
+}
+.but:hover{
+  background-color: #ddd;
+  color: black;
+}
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+
+}
+
+.next {
+  background-color: #20c14a;
+  color: white;
+}
+.available{
+  margin-left:300px;
+  margin-top:50px;
+}
+.dayBtn{
+    color: black;
+    padding: 5px;
+    width: 175px;
+    margin-top: 20px;
+    margin-right: 40px;
+}
+.dayBtn:hover{
+  background: #00c06c;
+  color:white;
+}
+.colDate{
+  width: 16%;
+  margin-right: 20px;
+}
+.schedule{
+  margin-left:300px;
+}
+.dateSubmitBtn{
+  width: 500px;
+  margin-left: 150px;
+  margin-top: 50px;
+}
+.subBtn{
+  background-color: #20c14a;
+  color: white;
+  width:100px;
+}
+.subBtn:hover{
+  background-color: #20c14a;
+  color: white;
+}
+#book_info{
+  margin-left:30%;
+  margin-top:50px;
+}
+.book_form{
+  margin-top:50px;
+  width:800px;
+}
+.inpPlace{
+  font-size:14px;
+  border: 1px solid #ffffffe0;
+}
+.rform{
+  margin-bottom: 30px;
+  font-size:15px;
+}
+.btnRow{
+  margin-left:500px;
+}
+.subBtnPrev{
+  background-color: white;
+  color: black;
+  width:100px;
+
+}
+.subBtnPrev:hover{
+  background-color: #20c14a;
+  color: white;
+  width:100px;
+
+}
+.details_content{
+  margin-top: 65px;
+  margin-left: 15%;
+}
+.details_content h6{
+  font-weight: 600;
+  font-size: 20px;
+}
+.itemspan{
+  display: flex;
+  margin-top: 20px;
+}
+.booking_details{
+  margin-top:50px;
+}
+.table_details{
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.t_label{
+  width:50px;
+}
+.t_data{
+  width:80%;
+  font-weight:300;
+}
+
+.footerImg{
+  max-width:150px;
+  margin-bottom:30px;
+
+}
+.footerDsc{
+  font-size: 11px;
+    display: flex;
+    padding-bottom: 17px;
+}
+
+  .footerCat {
+    font-size: 12px;
+    padding-bottom: 5px;
+    margin-top: 28px;
+    display: inline-block;
+    margin-left: 10px;
+}
+.arrow-cat{
+  color:#d15106;
+}
+#faicon{
+  margin-right:20px;
+}
