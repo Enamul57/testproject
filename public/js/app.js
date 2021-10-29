@@ -2190,7 +2190,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'Checkout',
@@ -40818,8 +40817,6 @@ var render = function() {
             attrs: { id: "yourPay" }
           },
           [
-            _c("span", [_vm._v("Cash payment")]),
-            _vm._v(" "),
             _c("img", {
               staticStyle: { width: "300px", "margin-top": "10px" },
               attrs: { src: "assets/images/payment.png", alt: "" }

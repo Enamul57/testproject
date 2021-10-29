@@ -101,7 +101,6 @@
 
 
                     <div class="row mt-5 " id='yourPay' style='display:none'>
-                        <span>Cash payment</span>
                         <img src="assets/images/payment.png" style='width:300px;margin-top:10px;' alt="">
                            <Payment> </Payment>
                     </div>
