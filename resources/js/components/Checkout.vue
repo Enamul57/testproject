@@ -46,12 +46,12 @@
                         <div class="col-md-4">
                             <h6>Location</h6>
                             <span class='itemspan'>{{this.form.place}}</span>
-                            <span class='itemspan'>{{this.form.placeCity}}</span>
+                            <span class='itemspan' v-if='form.placeCity'>{{this.form.placeCity}}</span>
                         </div>
                         <div class="col-md-4">
                             <h6>Date & Time</h6>
-                            <span class='itemspan'>{{this.form.date}}</span>
-                            <span class='itemspan'>{{this.form.time}}</span>
+                            <span class='itemspan' v-if='form.date'>{{this.form.date}}</span>
+                            <span class='itemspan'  v-if='form.time'>{{this.form.time}}</span>
                         </div>
 
                     </div>

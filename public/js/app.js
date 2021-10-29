@@ -3280,8 +3280,17 @@ var AppStorage = /*#__PURE__*/function () {
   }, {
     key: "addToDate",
     value: function addToDate(date, time) {
-      localStorage.setItem('date', date);
-      localStorage.setItem('time', time);
+      if (date !== null) {
+        localStorage.setItem('date', date);
+      }
+
+      ;
+
+      if (time !== null) {
+        localStorage.setItem('time', time);
+      }
+
+      ;
     }
   }, {
     key: "addInfo",
@@ -40580,21 +40589,27 @@ var render = function() {
               _vm._v(_vm._s(this.form.place))
             ]),
             _vm._v(" "),
-            _c("span", { staticClass: "itemspan" }, [
-              _vm._v(_vm._s(this.form.placeCity))
-            ])
+            _vm.form.placeCity
+              ? _c("span", { staticClass: "itemspan" }, [
+                  _vm._v(_vm._s(this.form.placeCity))
+                ])
+              : _vm._e()
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-4" }, [
             _c("h6", [_vm._v("Date & Time")]),
             _vm._v(" "),
-            _c("span", { staticClass: "itemspan" }, [
-              _vm._v(_vm._s(this.form.date))
-            ]),
+            _vm.form.date
+              ? _c("span", { staticClass: "itemspan" }, [
+                  _vm._v(_vm._s(this.form.date))
+                ])
+              : _vm._e(),
             _vm._v(" "),
-            _c("span", { staticClass: "itemspan" }, [
-              _vm._v(_vm._s(this.form.time))
-            ])
+            _vm.form.time
+              ? _c("span", { staticClass: "itemspan" }, [
+                  _vm._v(_vm._s(this.form.time))
+                ])
+              : _vm._e()
           ])
         ]),
         _vm._v(" "),

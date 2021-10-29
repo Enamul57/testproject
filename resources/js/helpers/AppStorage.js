@@ -24,8 +24,8 @@ class AppStorage{
         localStorage.setItem('subtotal',subtotal);
     }
     addToDate(date,time){
-        localStorage.setItem('date',date);
-        localStorage.setItem('time',time);
+        if(date !== null){localStorage.setItem('date',date)};
+        if(time !== null){localStorage.setItem('time',time)};
    }
    addInfo(name,email,phone,city, area,postcode,address,ordernote){
     localStorage.setItem('name',name);
