@@ -21,7 +21,7 @@ export default {
       paidFor: false,
       product: {
         price: localStorage.getItem('total'),
-        
+
       }
     };
   },
@@ -41,7 +41,7 @@ export default {
             return actions.order.create({
               purchase_units: [
                 {
-                  
+
                   amount: {
                     currency_code: "USD",
                     value: this.product.price,

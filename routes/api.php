@@ -3,7 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ConfirmationController;
+
 /*
+
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
@@ -17,4 +19,5 @@ use App\Http\Controllers\Api\ConfirmationController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::apiResource('/pay',App\Http\Controllers\Api\ConfirmationController::class);

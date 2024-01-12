@@ -5,6 +5,9 @@ class AppStorage{
     storeLong(longitude){
         localStorage.setItem('longitude',longitude);
     }
+    setLocation(location){
+        localStorage.setItem('location',location);
+    }
     storeLocation(lat,long){
         this.storeLat(lat);
         this.storeLong(long);
@@ -27,7 +30,7 @@ class AppStorage{
         if(date !== null){localStorage.setItem('date',date)};
         if(time !== null){localStorage.setItem('time',time)};
    }
-   addInfo(name,email,phone,city, area,postcode,address,ordernote){
+   addInfo(name,email,phone,city, area,postcode,address,note){
     localStorage.setItem('name',name);
     localStorage.setItem('email',email);
     localStorage.setItem('phone',phone);
@@ -35,8 +38,10 @@ class AppStorage{
     localStorage.setItem('area',area);
     localStorage.setItem('postcode',postcode);
     localStorage.setItem('address',address);
-    localStorage.setItem('ordernote',ordernote);
-   
+    localStorage.setItem('note',note);
+
 }
+
+
 }
 export default AppStorage = new AppStorage();

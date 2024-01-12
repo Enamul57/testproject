@@ -9,7 +9,7 @@
                     <router-link :to="{name:'Home'}" class="nav-link active" aria-current="page"  ><span class='circle'>1</span><span>Location</span><span class="arrow arrow-active">></span></router-link>
                     </li>
                     <li class="nav-item">
-                        
+
                     <router-link :to="{name:'Service'}" class="nav-link active" ><span class='circle'>2</span><span>Services</span>  <span class="arrow arrow-active">></span></router-link>
                     </li>
                     <li class="nav-item">
@@ -28,14 +28,14 @@
             </div>
             </nav>
                 <div class="row service_row">
-                    
+
                         <div class="col-md-8">
                              <div class="row">
                                 <div class="col-md-3 imgReview">
                                    <img src="assets/images/review.jpg" alt="">
                                  </div>
                                 <div class="col-md-5 titleReview">
-                                    <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </h6>  
+                                    <h6>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </h6>
                                     <div class="footerReview">
                                         <span class="fa fa-star checked"></span> <span style='font-weight:300'>4.9(231)</span>
                                     </div>
@@ -49,7 +49,7 @@
                                             <div>
                                                 <ul class='cartUl'>
                                                     <li class='cartData' id='bedList' style='display:block'>
-                                                        <span style='margin-right: 20px;font-weight:300'>Bed Room</span>$30 X 
+                                                        <span style='margin-right: 20px;font-weight:300'>Bed Room</span>$30 X
                                                         <input class='inp' id='inpBed' @keyup='AddBed' type="text" v-model='cart.bed'>
                                                         <span class='text-success span_pos' v-if='cart.bedpay'> = ${{cart.bedpay}}</span>
                                                         <a  @click='vanishBed' class='text-danger span_pos_remove'>Remove</a></li>
@@ -66,7 +66,7 @@
                              <div class="extra">
                                 <h6 class='mt-5'>Upgrade your order with extras</h6>
                                 <div class="extraCart">
-                                    <div class="row mt-5"> 
+                                    <div class="row mt-5">
                                         <div class="col-md-4">
                                             <span>Kitchen Cleaning</span>
                                             <div>
@@ -96,8 +96,8 @@
                                             </div>
 
                                         </div>
-                                        
-                                    </div> 
+
+                                    </div>
                                 </div>
                             </div>
 
@@ -105,7 +105,7 @@
                         <div class="col-md-4 ">
                             <h6 class='mb-5'>Booking Summary</h6>
                             <span style='font-weight:bold'>Apointment Package Service</span>
-                            <ul class='bookingUl'> 
+                            <ul class='bookingUl'>
                                 <li class='bookingLi' id='bookingBed'><span class='booking'>Bedroom X {{cart.bed}} = ${{cart.bedpay}}</span></li>
                                 <li class='bookingLi' id='bookingBath'><span class='booking'>Bathroom X {{cart.bath}} = ${{cart.bathpay}}</span></li>
                                 <li class='bookingLi' ><span class='booking' style='font-weight: bold;'>Package Fee  $150</span></li>
@@ -133,12 +133,12 @@
                         <a  @click='addTolocal' class="but next">Next</a>
                     </div>
                 </div>
-   
-        </div>
-      
-           
 
-        
+        </div>
+
+
+
+
 </template>
 <script>
 export default {
@@ -157,7 +157,7 @@ export default {
                 kitpay : null,
                 fridgepay: null,
                 gardenpay:null,
-                
+
                 subtotal:0,
                 total:0,
         }
@@ -223,7 +223,7 @@ export default {
         }
         ,
 
-        
+
         vanishBed(){
             $('#bedList').css('display','none');
             $('#bookingBed').css('display','none');
@@ -275,7 +275,7 @@ export default {
             let fridgepay = this.fridgepay;
             let gardenpay = this.gardenpay;
             let subtotal = this.subtotal;
-            console.log(total);
+
              AppStorage.setService(bed,bath,kitchen,fridge,garden,total,bedpay, bathpay,kitpay,fridgepay,gardenpay,subtotal);
              this.$router.push({name:'Date'});
         }

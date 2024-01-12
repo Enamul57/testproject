@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Confirm;
+use App\Models\BookInfo;
 
 class ConfirmationController extends Controller
 {
@@ -16,7 +16,7 @@ class ConfirmationController extends Controller
     public function index()
     {
         //
-    
+
     }
 
     /**
@@ -37,10 +37,9 @@ class ConfirmationController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $pay = new Confirm;
-        $pay->place = $request->place;
-        $pay->placeCity = $request->placeCity;
+
+        $pay = new BookInfo;
+        $pay->location = $request->place;
         $pay->date = $request->date;
         $pay->time = $request->time;
         $pay->name = $request->name;
@@ -49,8 +48,9 @@ class ConfirmationController extends Controller
         $pay->city = $request->city;
         $pay->area = $request->area;
         $pay->postcode = $request->postcode;
-        $pay->bed = $request->bed;
-        $pay->bath = $request->bath;
+        $pay->address = $request->address;
+        $pay->bedroom = $request->bed;
+        $pay->bathroom = $request->bath;
         $pay->kitchen = $request->kitchen;
         $pay->fridge = $request->fridge;
         $pay->garden = $request->garden;
@@ -62,6 +62,7 @@ class ConfirmationController extends Controller
         $pay->subtotal = $request->subtotal;
         $pay->total = $request->total;
         $pay->save();
+        return response()->json($request);
 
     }
 

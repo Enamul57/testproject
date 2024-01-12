@@ -9,7 +9,7 @@
                     <router-link :to="{name:'Home'}" class="nav-link active" aria-current="page" style='text-align:center' ><span class='circle'>1</span><span>Location</span><span class="arrow arrow-active">></span></router-link>
                     </li>
                     <li class="nav-item">
-                        
+
                     <router-link  :to="{name:'Service'}" class="nav-link" ><span>Services</span>  <span class="arrow">></span></router-link>
                     </li>
                     <li class="nav-item">
@@ -31,9 +31,9 @@
                     {{location}}
                 </a>
             </nav>
-                
+
         </div>
-      
+
         <div id="showmap">
         <div class="card" >
         <div class="card-body map">
@@ -44,12 +44,12 @@
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
            <div>
                <button  class="btn custom-btn" @click='servicePage'> Next</button>
-               
-           </div>
-        </div>   
-           
 
-        
+           </div>
+        </div>
+
+
+
     </div>
 </template>
 
@@ -75,10 +75,10 @@
                             console.log(position.coords.latitude);
                             console.log(position.coords.longitude);
                             //this.location = 'Latitude is:'+position.coords.latitude+ " & Longitude is:"+position.coords.longitude;
-                             if(latitude > 23.70 && longitude >90.00){
-                                 this.location='Banasree,Dhaka';
+                             if(latitude >= 23.7670649 && longitude >=90.340342){
+                                 this.location='Beribadh Main Road, Dhaka';
                              }else{
-                                 this.location = 'Rampura,Dhaka';
+                                 this.location = 'Dhaka';
                              }
                              AppStorage.storeLocation(latitude ,longitude);
 
@@ -88,19 +88,25 @@
             },
     //         async getStreetAddressFrom(lat,long){
     //        await $.get( "https://api.opencagedata.com/geocode/v1/json?q=PLACENAME&key=665e91e8ffb4473c8419badd720f368d", function(data) {
-                            
+
     //                         this.maps= data.results[0];
     //                         console.log(this.maps);
     //                     }).catch(err=> console.log(err.data));
     //         // $.get( "https://maps.googleapis.com/maps/api/geocode/json?latlng="+ lat + "," + long +"&key=AIzaSyAe-7DKy3o9XtCNjgqg6Jw0CTtlaRB0-dU", function(data) {
     //         //         console.log(data);
     //         //       })
-                        
+
     //    },
             servicePage(){
+               AppStorage.setLocation(this.location);
                 this.$router.push({name:'Service'});
             }
         },
-                
+
     }
 </script>
+<style >
+   .btn-custom{
+    width:30%;
+   }
+</style>
